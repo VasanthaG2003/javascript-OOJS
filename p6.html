@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>OBJECT</h1>
+    </center>
+
+    <script>
+        let user = {
+            "name":"Vasantha",
+            "age":"20",
+            "isAdmin": true,
+            "hobbies": ["trekking", "cycling", "cooking"],
+            "sayHi": function(){
+                return "say hi to " + this.name;
+            },
+            "display" : (na) =>{
+                /* this pointer not allowed only for arrow function declared as property of an object. */
+                return "Welcome to Javascript " + na;
+            },
+            "account": [
+                {
+                    "bank": "SBI",
+                    "accNo": 1234
+                },
+                {
+                    "bank": "ICICI",
+                    "accNo": 45678
+                }
+            ]
+        };
+        console.log(user);
+        console.log(user.name);
+        document.write(`<h3> Name is ${ user.name }. welcome to bepractical </h3>`);
+        document.write('<h3> age is '+ user.age +'</h3>');
+        document.write(`<h3> isAdmin is ${ user["isAdmin"] } </h3>`);
+
+        document.write(`<h3> ${ user.sayHi() } </h3>`);
+        document.write(`<h3> ${ user.display("Nethra") } </h3>`);
+        document.write(`<h3> ${ user.display(user.name) } </h3>`);
+    </script>
+
+    <script>
+        let user1 ={};
+        console.log("BEFORE", user1);
+
+        Object.defineProperty(user1, "firstName",{value:"Vasantha", writable:true});
+        console.log("AFTER", user1);
+
+        user1.firstName = "Vishlawath";
+        console.log("UPDATE", user1);
+    </script>
+
+    <h3>object.freeze</h3>
+    <script>
+        let user2 = {
+            "name":"Nethra"
+        };
+
+        console.log("USER2 OBJECT");
+        console.log("BEFORE", user2);
+
+        user2.name = "Vasantha";
+        console.log("AFTER", user2);
+
+
+        Object.freeze(user2);
+        // freeze the object (readonly) not allow to accept new value in strict 
+
+        user2.name = "Vasu";
+        console.log("AFTER FREEZE", user2);
+    </script>
+</body>
+</html>
